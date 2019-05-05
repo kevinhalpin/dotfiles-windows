@@ -36,6 +36,8 @@ if ((which cinst) -eq $null) {
     choco feature enable -n=allowGlobalConfirmation
 }
 
+choco feature enable -n=allowGlobalConfirmation
+
 # system and cli
 choco install curl                --limit-output
 choco install nuget.commandline   --limit-output
@@ -59,10 +61,10 @@ choco install python              --limit-output
 
 Refresh-Environment
 
-python.exe "./KevinCustom/cleanChocoPackages.py"
+python.exe "./cleanChocoPackages.py"
 
 
-[Array] $chocoPackages = Get-Content "./KevinCustom/SanitizedChocoPackagesToInstall.txt"
+[Array] $chocoPackages = Get-Content "./SanitizedChocoPackagesToInstall.txt"
 
 foreach($package in $chocoPackages)
 {
